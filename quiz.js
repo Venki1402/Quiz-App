@@ -49,6 +49,7 @@ const startGame = () => {
 
 const getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem("finalScore", score);
         return window.location.assign('end.html');
     }
 
@@ -98,3 +99,5 @@ const incrementScore = (num) => {
 }
 
 startGame();
+
+// export default score;
