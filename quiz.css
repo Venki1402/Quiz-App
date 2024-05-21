@@ -21,11 +21,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     width: 80%;
-    /* max-width: 800px; */
-    /* background-color: white; */
     padding: 20px;
-    /* border-radius: 15px; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     position: relative;
 }
 
@@ -48,7 +44,7 @@ body {
 }
 
 .progressbar {
-    width: 200px; /* Adjust as necessary */
+    width: 200px;
     height: 20px;
     background-color: white;
     border-radius: 10px;
@@ -83,7 +79,7 @@ body {
 }
 
 .question-div {
-    margin-top: 80px; /* Adjust as necessary to ensure there's enough space for the progress bar and score */
+    margin-top: 80px;
     text-align: center;
 }
 
@@ -118,4 +114,27 @@ body {
 
 .choice-text {
     font-size: 1.5rem;
+}
+
+@keyframes correct-glow {
+    0% { box-shadow: 0 0 5px #28a745; }
+    50% { box-shadow: 0 0 20px #28a745; }
+    100% { box-shadow: 0 0 5px #28a745; }
+}
+
+@keyframes wrong-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+.correct {
+    animation: correct-glow 1s ease-in-out;
+    border: 2px solid #28a745;
+}
+
+.incorrect {
+    animation: wrong-shake 0.5s ease;
+    border: 2px solid #dc3545;
 }
