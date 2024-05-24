@@ -90,7 +90,7 @@ body {
     background: none;
 }
 
-.choice {
+.choice-container {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -101,7 +101,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.choice:hover {
+.choice-.container:hover {
     background-color: whitesmoke;
 }
 

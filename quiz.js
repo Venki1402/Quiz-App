@@ -1,5 +1,5 @@
 const question = document.querySelector('#question-text');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
+const choices = Array.from(document.querySelectorAll('.choice-container'));
 const progress = document.querySelector('#progress-text');
 const scoreText = document.querySelector('#score-txt');
 const progressBar = document.querySelector('.progressbar-inner');
@@ -62,8 +62,8 @@ const getNewQuestion = () => {
     question.innerText = currentQuestion.question;
 
     choices.forEach(choice => {
-        const number = choice.dataset['number'];
-        choice.innerText = currentQuestion['choice' + number];
+        const number = choice.querySelector('.choice-text').dataset['number'];
+        choice.querySelector('.choice-text').innerText = currentQuestion['choice' + number];
     })
 
     availableQuestions.splice(questionIndex, 1);
@@ -76,7 +76,7 @@ choices.forEach(choice => {
 
         acceptingAnswers = false;
         const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset['number'];
+        const selectedAnswer = selectedChoice.querySelector('.choice-text').dataset['number'];
 
         const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
@@ -84,10 +84,10 @@ choices.forEach(choice => {
             incrementScore(SCORE_POINTS);
         }
 
-        selectedChoice.parentElement.classList.add(classToApply);
+        selectedChoice.classList.add(classToApply);
 
         setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply);
+            selectedChoice.classList.remove(classToApply);
             getNewQuestion();
         }, 1000);
     });
